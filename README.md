@@ -57,6 +57,12 @@ Gradle documentation for beginners
 - Now execute your new copy task:
   - ./gradlew copy
 
+- The tasks command lists Gradle tasks that you can invoke, including those added by the base plugin, and custom tasks you just added as well.
+  - ./gradlew tasks
+  
+### Discover available properties
+- The properties command tells you about a project’s attributes.
+  - ./gradlew properties
 
   
 ## The Gradle Wrapper
