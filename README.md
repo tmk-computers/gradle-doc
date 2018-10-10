@@ -84,5 +84,66 @@ Gradle documentation for beginners
         ├── gradlew
         └── gradlew.bat
 
+## Create Java Project with gradle
+- run below commands
+  - gradle init --type java-application
+  
+  
 
+The init task runs the wrapper task first, which generates the gradlew and gradlew.bat wrapper scripts. Then it creates the new project with the following structure:
 
+        ├── build.gradle
+        ├── gradle   
+        │   └── wrapper
+        │       ├── gradle-wrapper.jar
+        │       └── gradle-wrapper.properties
+        ├── gradlew
+        ├── gradlew.bat
+        ├── settings.gradle
+        └── src
+        ├── main
+        │   └── java  
+        │       └── App.java
+        └── test      
+        └── java
+            └── AppTest.java
+
+    - Generated folder for wrapper files
+	  - Default Java source folder
+	  - Default Java test folder
+
+- Review the generated project files
+- The **settings.gradle** file is heavily commented, but has only one active line:
+
+      rootProject.name='java-demo'
+
+- This assigns the name of the root project to java-demo, which is the default.
+
+- The generated build.gradle file also has many comments. The active portion is reproduced here (note version numbers for the dependencies may be updated in later versions of Gradle):
+**build.gradle**
+
+      plugins {
+        id 'java'
+        id 'application'
+      }
+
+      repositories {
+        jcenter()  
+      }
+
+      dependencies {
+        compile 'com.google.guava:guava:21.0'  
+        testCompile 'junit:junit:4.12'         
+      }
+
+      mainClassName = 'App'  
+
+	  - public Bintray Artifactory repository
+	  - Google Guava library
+	  - JUnit testing library
+	  - Class with "main" method (used by Application plugin)
+    
+#### Execute the build
+
+- To build the project, run the build command. You can use the regular gradle command, but when a project includes a wrapper script, it is considered good form to use it instead.
+  - ./gradlew build
