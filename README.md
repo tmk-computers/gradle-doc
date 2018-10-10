@@ -147,3 +147,5 @@ The init task runs the wrapper task first, which generates the gradlew and gradl
 
 - To build the project, run the build command. You can use the regular gradle command, but when a project includes a wrapper script, it is considered good form to use it instead.
   - ./gradlew build
+- The run task tells Gradle to execute the main method in the class assigned to the mainClassName property.
+  - ./gradlew run
