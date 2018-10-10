@@ -149,3 +149,45 @@ The init task runs the wrapper task first, which generates the gradlew and gradl
   - ./gradlew build
 - The run task tells Gradle to execute the main method in the class assigned to the mainClassName property.
   - ./gradlew run
+  
+
+# Example of Spring boot Gradle Project
+## build.gradle
+
+	buildscript {
+		ext {
+			springBootVersion = '2.0.5.RELEASE'
+		}
+		repositories {
+			mavenCentral()
+		}
+		dependencies {
+			classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		}
+	}
+
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+
+	group = 'com.example'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = 1.8
+
+	repositories {
+		mavenCentral()
+	}
+
+
+	dependencies {
+		implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+		implementation('org.springframework.boot:spring-boot-starter-web')
+		runtimeOnly('mysql:mysql-connector-java')
+		testImplementation('org.springframework.boot:spring-boot-starter-test')
+	}
+
+
+
+## To run your application without first building an archive use the bootRun task:
+- ./gradlew bootRun
