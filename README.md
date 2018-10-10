@@ -17,6 +17,48 @@ Gradle documentation for beginners
 - check gradle configured correctly
   - gradle -v
   
+## Gradle commands
+
+### Project Initialization
+
+- Creating new Gradle builds : Use the built-in gradle init task to create a new Gradle builds, with new or existing projects.
+  - > mkdir basic-demo
+  - > cd basic-demo
+  - > gradle init
+
+  - **gradle init** command creates below files automatically
+  
+        ├── build.gradle  
+        ├── gradle
+        │   └── wrapper
+        │       ├── gradle-wrapper.jar  
+        │       └── gradle-wrapper.properties  
+        ├── gradlew  
+        ├── gradlew.bat  
+        └── settings.gradle  
+  
+  
+- You can also pass application type as a type parameter to specify project type like java-application, java-library, etc.
+  - gradle init --type java-library
+  
+- The built-in gradle wrapper task generates a script, gradlew, that invokes a declared version of Gradle, downloading it beforehand if necessary.
+  - gradle wrapper --gradle-version=4.4
+  
+### Create task
+
+- Gradle provides APIs for creating and configuring tasks through a Groovy or Kotlin-based DSL. A Project includes a collection of Tasks, each of which performs some basic operation.
+- Gradle comes with a library of tasks that you can configure in your own projects. For example, there is a core type called Copy, which copies files from one location to another. 
+- Open build.gradle file and add below code to it.
+
+      task copy(type: Copy, group: "Custom", description: "Copies sources to the dest directory") {
+        from "src"
+        into "dest"
+      }
+- Now execute your new copy task:
+  - ./gradlew copy
+
+
+  
 ## The Gradle Wrapper
 - The Wrapper is a script that invokes a declared version of Gradle, downloading it beforehand if necessary. As a result, developers can get up and running with a Gradle project quickly without having to follow manual installation processes saving your company time and money.
 
